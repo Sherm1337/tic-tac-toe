@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --custom-sky-blue: #87CEEB;
+    --custom-dark-sky-blue: rgb(59, 141, 173);
+    --custom-grass-green: #7CFC00;
+    --custom-sunshine-yellow: #FFFF00;
+    --custom-cherry-red: #FF0000;
+    --custom-slate-gray: #708090;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: roboto;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--custom-slate-gray);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    margin: 20px auto 30px auto;
+
+}
+
+.gameboard {
+    margin: 0 auto 0 auto;
+
+    width: 50vw;
+    height: 50vw;
+    
+    display: grid;
+    grid: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    gap: 1em;
+
+    border: solid 1em var(--custom-sunshine-yellow);
+    border-radius: 1em;
+
+    background-color: var(--custom-sunshine-yellow);
+}
+
+.gameTile {
+    display: grid;
+    place-content: center;
+    background-color: var(--custom-sky-blue);
+    border-radius: .5em;
+}
+
+.gameTile:hover {
+    background-color: var(--custom-dark-sky-blue);
+}
+
+.marker {
+    font-size: 9em;
+    font-weight: 900;
+}
