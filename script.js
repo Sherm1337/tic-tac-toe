@@ -77,35 +77,6 @@ const gameRenderModule =  {
             }
         })();
     })(),
-
-    gametype: function() {
-        const gameBoard = document.querySelector(".gameboard");
-        
-        //} else if (gameStats.multiplayer = true) {
-        //    for (const tile of gameBoard.children) {
-        //        tile.addEventListener("click", () => {
-        //            if(tile.textContent == ""){
-        //            tile.textContent = gameStats.currentPlayer.marker;
-        //            tile.id = tile.getAttribute("id");
-        //            gameStats.currentPlayer.tilesPlayed.push(parseInt(tile.id));
-        //            gameStats.roundCount++;
-        //            if (gameStats.roundCount < 9){
-        //                gameOver();
-        //            } else if (gameStats.roundCount == 9){
-        //                gameOver();
-        //            }
-        //            if(gameStats.currentPlayer == gameStats.player1) {
-        //                gameStats.currentPlayer == gameStats.player2;
-        //            } else if (gameStats.currentPlayer == gameStats.player2) {
-        //                gameStats.currentPlayer == gameStats.player1;
-//
-        //            }
-        //        }
-        //      });
-        //    }
-        //  }
-    },
-
 }
 
 const gameStats = (function() {    
