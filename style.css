@@ -96,6 +96,14 @@ body {
 
 .gameTile:hover {
     background-color: olive;
+    translate: 3px -5px;
+    border: solid 2px var(--custom-sandstone);
+    box-shadow: 0 0 15px black;
+}
+
+.start-game-button:hover,
+.new-game-button:hover {
+    translate: 3px -2px;
 }
 
 /* mobile styling starts here */
