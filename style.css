@@ -57,3 +57,11 @@ body {
 .gameTile:hover {
     background-color: var(--custom-dark-sky-blue);
 }
+
+/* mobile styling starts here */
+@media (max-width: 800px) {
+.gameboard {
+    height: 60vh;
+    width: 60vh;
+}
+}
