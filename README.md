@@ -1,2 +1,2 @@
 # tic-tac-toe
-TOP Tic Tac Toe
+The Odin Project - Tic Tac Toe in Javascript.
