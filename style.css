@@ -43,7 +43,7 @@ body {
     font-weight: 600;
 }
 
-.start-game-button,
+.gametype,
 .new-game-button {
     font-size: 25px;
     font-weight: 600;
@@ -101,7 +101,7 @@ body {
     box-shadow: 0 0 15px black;
 }
 
-.start-game-button:hover,
+.gametype:hover,
 .new-game-button:hover {
     translate: 3px -2px;
 }
