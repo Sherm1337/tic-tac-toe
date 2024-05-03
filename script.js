@@ -1,6 +1,12 @@
 const gameModule =  {
     createGameBoard: (function() {
         const mainContainer = document.querySelector(".main-container");
+        const startGameDialog = document.querySelector(".start-game");
+        const startGameButton = document.querySelector(".start-game-button");
+    
+        startGameButton.addEventListener("click", () => {
+        mainContainer.removeChild(startGameDialog);
+        }),
         (function createGameBoardContainer() {
             const gameBoard = document.createElement("div");
             gameBoard.classList.add("gameboard");
@@ -17,10 +23,10 @@ const gameModule =  {
                     newTile.id = newTile.getAttribute("id");
                     gameOperations.player1.tilesPlayed.push(parseInt(newTile.id));
                     gameOperations.roundCount++;
-                    if (gameOperations.roundCount < 5){
+                    if (gameOperations.roundCount < 9){
                         gameOperations.gameOver();
                         computerTurn();
-                    } else if (gameOperations.roundCount == 5){
+                    } else if (gameOperations.roundCount == 9){
                         gameOperations.gameOver();
                     }
                 }});
@@ -35,14 +41,14 @@ const gameModule =  {
                     } else if (tileChoice.textContent === ""){
                     gameOperations.computer.tilesPlayed.push(computerChoice);
                     tileChoice.textContent = gameOperations.computer.marker;
+                    gameOperations.roundCount++;
                     gameOperations.gameOver();
+                    
                     }
                 }
             }
         })();
     })(),
-
-    winningCombos: [123, 456, 789, 147, 258, 369, 159, 357],
 
     Player: function(name, marker) {
         this.name = name;
@@ -50,7 +56,6 @@ const gameModule =  {
         this.tilesPlayed = [];
     },
 }
-
 
 const gameOperations = {
     roundCount: 0,
@@ -63,32 +68,65 @@ const gameOperations = {
     gameOver: function() {
         this.player1.tilesPlayed.sort();
         playerTilesPlayedString = this.player1.tilesPlayed.join("");
-        console.log(playerTilesPlayedString);
         
         this.computer.tilesPlayed.sort();
         computerTilesPlayedString = this.computer.tilesPlayed.join("");
 
-        function clearTilesPlayed() {
+        function clearPlayerTilesPlayed() {
             gameOperations.player1.tilesPlayed = [];
             gameOperations.computer.tilesPlayed = [];
         }
+        const mainContainer = document.querySelector(".main-container");
+        function showNewGameDialog(winner) {
+            const newDialog = document.createElement("dialog");
+            newDialog.classList.add("new-game");
+            mainContainer.appendChild(newDialog);
+
+            const winnerPara = document.createElement("p");
+            if(winner !== ""){
+                winnerPara.textContent = `${winner} is the winner!`;
+                newDialog.appendChild(winnerPara);
+            } else {
+                winnerPara.textContent = "It's a Draw!";
+                newDialog.appendChild(winnerPara);
+            }
+
+            const newDialogButton = document.createElement("button");
+            newDialogButton.classList.add("new-game-button");
+            newDialogButton.textContent = "New Game"
+            newDialog.appendChild(newDialogButton);
+
+            newDialogButton.addEventListener("click", () => {
+                mainContainer.removeChild(newDialog);
+            })
+        };
 
         const gameTiles = document.querySelectorAll(".gameTile")
         const regex = /(1.*2.*3|4.*5.*6|7.*8.*9|1.*4.*7|2.*5.*8|3.*6.*9|1.*5.*9|3.*5.*7)/;
         const playerMatches = playerTilesPlayedString.match(regex);
         const computerMatches = computerTilesPlayedString.match(regex);
         if (playerMatches) {
-            alert(this.player1.name + " is the winner!");
+            showNewGameDialog("Player1");
             gameTiles.forEach((tile) => {
                 tile.textContent = "";
+                this.roundCount = 0;
             })
-            clearTilesPlayed();
+            clearPlayerTilesPlayed();
         } else if (computerMatches) {
-            alert(this.computer.name + " is the winner!")
+            showNewGameDialog("Computer");
             gameTiles.forEach((tile) => {
                 tile.textContent = "";
+                this.roundCount = 0;
             })
-            clearTilesPlayed();
+            clearPlayerTilesPlayed();
+        }else if(this.roundCount == 9) {
+            showNewGameDialog("");
+            gameTiles.forEach((tile) => {
+                tile.textContent = "";
+                this.roundCount = 0;
+            })
+            clearPlayerTilesPlayed();
         }
     },
 };
+

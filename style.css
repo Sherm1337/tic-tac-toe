@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
-    --custom-sky-blue: #87CEEB;
-    --custom-dark-sky-blue: rgb(59, 141, 173);
-    --custom-grass-green: #7CFC00;
-    --custom-sunshine-yellow: #FFFF00;
-    --custom-cherry-red: #FF0000;
-    --custom-slate-gray: #708090;
+    --custom-terracotta: #ab5229;
+    --custom-olive: olive;
+    --custom-dark-olive: darkolivegreen;
+    --custom-sandstone: #dcba7f;
+    --custom-slate: slategray;
+    --custom-amber: rgb(255, 191, 0);
 }
 
 * {
@@ -18,7 +18,42 @@
 
 body {
     height: 100vh;
-    background-color: var(--custom-slate-gray);
+    background-color: var(--custom-sandstone);
+}
+
+
+.new-game,
+.start-game {
+    position: fixed;
+    display: flex;
+    flex-flow: column;
+
+    align-items: center;
+
+    top: 30vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 20px 30px 40px 30px;
+    background-color: var(--custom-amber);
+    border: solid 10px black;
+    border-radius: 1em;
+
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.start-game-button,
+.new-game-button {
+    font-size: 25px;
+    font-weight: 600;
+
+    padding: 10px 15px;
+    margin-top: 20px;
+
+    border: solid 5px black;
+    border-radius: 1em;
+    background-color: var(--custom-terracotta);
 }
 
 .main-container {
@@ -28,40 +63,56 @@ body {
 
 .header{
     margin: 20px auto 30px auto;
-
+    padding: 10px 20px;
+    border-radius: 1em;
+    background-color: var(--custom-terracotta);
 }
 
 .gameboard {
     margin: 0 auto 0 auto;
 
-    width: 50vw;
-    height: 50vw;
+    width: 40vw;
+    height: 40vw;
     
     display: grid;
     grid: 1fr 1fr 1fr / 1fr 1fr 1fr;
     gap: 1em;
 
-    border: solid 1em var(--custom-sunshine-yellow);
+    border: solid 1em var(--custom-terracotta);
     border-radius: 1em;
 
-    background-color: var(--custom-sunshine-yellow);
+    background-color: var(--custom-terracotta);
 }
 
 .gameTile {
     display: grid;
     place-content: center;
-    background-color: var(--custom-sky-blue);
+    background-color: var(--custom-dark-olive);
     border-radius: .5em;
+    color: var(--custom-sandstone);
+    font-weight: 900;
+    font-size: 500%;
 }
 
 .gameTile:hover {
-    background-color: var(--custom-dark-sky-blue);
+    background-color: olive;
 }
 
 /* mobile styling starts here */
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
 .gameboard {
-    height: 60vh;
-    width: 60vh;
+    height: 45vh;
+    width: 45vh;
+}
+
+.gameTile {
+    font-size: 400%;
+}
+
+.start-game,
+.new-game {
+    width: 90vw;
+
+    text-align: center;
 }
 }
