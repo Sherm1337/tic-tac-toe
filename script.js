@@ -17,7 +17,6 @@ const gameRenderModule =  {
         multiplayerButton.addEventListener("click", () => {
             mainContainer.removeChild(startGameDialog);
             multiplayer = true;
-            gameRenderModule.gametype();
         });
 
         const computerButton = document.querySelector(".computer");
@@ -25,7 +24,6 @@ const gameRenderModule =  {
         computerButton.addEventListener("click", () => {
             mainContainer.removeChild(startGameDialog);
             multiplayer = false;
-            gameRenderModule.gametype();
         });
     })(),
 
